@@ -5,13 +5,13 @@
 
   ![скрин](../res/img_dev_env.JPG)
 
-### 3. Выполняю команду `docker-compose down -v` для очистки и затем `docker-compose up -d mongo` для запуска базы данных `MongoDB`
+### 3. Выполнил команду `docker-compose down -v` для очистки и затем `docker-compose up -d mongo` для запуска базы данных `MongoDB`
 
-### 4. Запускаю в терминале команду `npm run dev` (скрин ниже)
+### 4. Запустил в терминале команду `npm run dev` (скрин ниже)
 
   ![скрин](../res/img_dev_connect.JPG)
 
-### 5. Запускаю `Postman` и тестирую api.
+### 5. Запустил `Postman` и тестирую api.
 
   +  **5.1. Регистрация**
      - Проверил регистрацию впервые и выполнил запрос, получив `status: 200 OK`. (Ниже скрин)
@@ -78,7 +78,7 @@
 
         ![скрин](../res/img_dev_get_id_advertisements_success_200.JPG)
 
-    - Проверил просмотр объявления по несуществующему идентификатору и выполнил запрос, получив `status: 400 Bad Request`. (Ниже скрин)
+    - Проверил просмотр объявления по невалидному идентификатору и выполнил запрос, получив `status: 400 Bad Request`. (Ниже скрин)
 
         |Key|Value|
         |--------|-----------|
@@ -87,7 +87,7 @@
 
         ![скрин](../res/img_dev_get_id_advertisements_error_400.JPG)
 
-    - Проверил просмотр объявления по невалидному идентификатору и выполнил запрос, получив `status: 404 Not Found`. (Ниже скрин)
+    - Проверил просмотр объявления по несуществующему идентификатору и выполнил запрос, получив `status: 404 Not Found`. (Ниже скрин)
 
         |Key|Value|
         |--------|-----------|
@@ -122,7 +122,7 @@
         |Method|`DELETE`|
         |URL|`http://localhost:3000/api/advertisements/:id`|
 
-        ![скрин](../res/img_dev_post_advertisements_auth_error_401.JPG)
+        ![скрин](../res/img_dev_delete_id_advertisements_auth_success_200.JPG)
 
     - Проверил удаление объявления без аутентификации и выполнил запрос, получив `status: 401 Unauthorized`. (Ниже скрин)
 
@@ -131,7 +131,7 @@
         |Method|`DELETE`|
         |URL|`http://localhost:3000/api/advertisements/:id`|
 
-        ![скрин](../res/img_dev_post_advertisements_auth_error_401.JPG)
+        ![скрин](../res/img_dev_delete_id_advertisements_auth_error_401.JPG)
 
     - Проверил удаление объявления другим пользователем (после аутентификации) и выполнил запрос, получив `status: 403 Forbidden`. (Ниже скрин)
 
@@ -143,7 +143,7 @@
         ![скрин](../res/img_dev_delete_id_advertisements_auth_error_403.JPG)
 
 ### 6. Общение
-#### Открываю два разных браузера для удобного тестирования сокета, и там пишу URL: `http://localhost:3000/socket-test.html` и открываю страницу каждого браузера
+  Открываю два разных браузера для удобного тестирования сокета, и там пишу URL: `http://localhost:3000/socket-test.html` и открываю страницу каждого браузера
 
   - Ввёл `email` и `password` первого и второго пользователя в разных браузерах. (Ниже скрин)
 

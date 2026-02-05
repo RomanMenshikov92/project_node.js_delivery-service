@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Тест чата</title>
+    <link rel="stylesheet" href="chat-test.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Тест чата</h1>
+
+      <!-- Секция входа -->
+      <div class="section" id="loginSection">
+        <div class="section-title">Вход</div>
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Email" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Пароль</label>
+            <input type="password" id="password" placeholder="Пароль" required />
+          </div>
+          <button id="loginBtn" type="submit">Войти</button>
+        </form>
+        <div id="loginStatus" class="status" style="display: none"></div>
+      </div>
+
+      <!-- Секция чата -->
+      <div class="section" id="chatSection" style="display: none">
+        <div class="user-info" id="userInfo">
+          <strong>Вы:</strong> <span id="userName">-</span> | <strong>ID:</strong>
+          <span id="userIdDisplay">-</span>
+        </div>
+        <div class="section-title">Сокет</div>
+        <button id="connectBtn">Подключиться</button>
+        <button id="disconnectBtn" disabled>Отключиться</button>
+        <div id="connectionStatus" class="status disconnected">Отключено</div>
+      </div>
+
+      <!-- Секция общения -->
+      <div class="section" id="messagesSection" style="display: none">
+        <div class="section-title">
+          Чат с <span id="chatWith">-</span>
+          <span class="user-status" id="userStatusIndicator"></span>
+        </div>
+        <div class="form-group">
+          <label for="receiverId">ID собеседника</label>
+          <input type="text" id="receiverId" placeholder="ID пользователя" />
+        </div>
+        <button id="connectChatBtn">Подключиться</button>
+        <button id="getHistoryBtn" disabled>История</button>
+
+        <div class="chat-container">
+          <div class="chat-messages" id="chatMessages">
+            <div class="no-messages">Выберите собеседника</div>
+          </div>
+        </div>
+
+        <div class="chat-input">
+          <form id="messageForm">
+            <input type="text" id="messageInput" placeholder="Сообщение..." disabled />
+            <button type="submit" disabled>➤</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="chat-test.js"></script>
+  </body>
+</html>

@@ -1,0 +1,269 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f5f7fa;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+    color: #1890ff;
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.section {
+    margin-bottom: 25px;
+    padding: 20px;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    background: #fafafa;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #1890ff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.section-title::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 16px;
+    background: #1890ff;
+    border-radius: 2px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #595959;
+    font-size: 13px;
+}
+
+input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #1890ff;
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.1);
+}
+
+button {
+    padding: 10px 20px;
+    background: #1890ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.2s;
+    margin-right: 8px;
+}
+
+button:hover:not(:disabled) {
+    background: #096dd9;
+}
+
+button:disabled {
+    background: #d9d9d9;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.status {
+    padding: 8px 12px;
+    margin-top: 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.status.connected {
+    background: #f6ffed;
+    color: #52c41a;
+    border: 1px solid #b7eb8f;
+}
+
+.status.disconnected {
+    background: #fff2e8;
+    color: #fa8c16;
+    border: 1px solid #ffd591;
+}
+
+.status.error {
+    background: #fff1f0;
+    color: #ff4d4f;
+    border: 1px solid #ffa39e;
+}
+
+.chat-container {
+    display: flex;
+    gap: 20px;
+    height: 450px;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 15px;
+    background: white;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    overflow-y: auto;
+    font-size: 14px;
+}
+
+.message {
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    max-width: 70%;
+    animation: fadeIn 0.2s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message.sent {
+    background: #e6f7ff;
+    margin-left: auto;
+    border-bottom-left-radius: 4px;
+}
+
+.message.received {
+    background: #f9f9f9;
+    margin-right: auto;
+    border-bottom-right-radius: 4px;
+}
+
+.message .author {
+    font-weight: 600;
+    font-size: 12px;
+    margin-bottom: 4px;
+    color: #1890ff;
+}
+
+.message.sent .author {
+    color: #096dd9;
+}
+
+.message .text {
+    font-size: 14px;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+.message .time {
+    font-size: 11px;
+    color: #8c8c8c;
+    margin-top: 4px;
+    text-align: right;
+}
+
+.message .delivery-status {
+    font-size: 12px;
+    margin-top: 4px;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+}
+
+.check-double.read {
+    color: #52c41a;
+    font-weight: bold;
+}
+
+.chat-input form {
+    display: flex;
+    gap: 10px;
+}
+
+.chat-input input {
+    flex: 1;
+    border-radius: 20px;
+}
+
+.chat-input button {
+    border-radius: 20px;
+    padding: 10px 24px;
+}
+
+.user-info {
+    background: #e6f7ff;
+    padding: 12px 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 13px;
+    color: #096dd9;
+}
+
+.user-info strong {
+    color: #0050b3;
+}
+
+.no-messages {
+    text-align: center;
+    color: #bfbfbf;
+    padding: 60px 0;
+    font-size: 14px;
+}
+
+.user-status {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-left: 5px;
+}
+
+.status-online {
+    background: #52c41a;
+    box-shadow: 0 0 4px #52c41a;
+}
+
+.status-offline {
+    background: #ff4d4f;
+}

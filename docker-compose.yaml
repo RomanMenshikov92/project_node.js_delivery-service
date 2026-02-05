@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:latest
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER:-root}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD:-example}
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/db
+
+  mongo-express:
+    image: mongo-express:latest
+    restart: unless-stopped
+    ports:
+      - '1111:8081'
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://${MONGO_ROOT_USER:-root}:${MONGO_ROOT_PASSWORD:-example}@mongo:27017/
+      ME_CONFIG_BASICAUTH_ENABLED: 'true'
+      ME_CONFIG_BASICAUTH_USERNAME: ${ME_USER:-mongoexpressuser}
+      ME_CONFIG_BASICAUTH_PASSWORD: ${ME_PASSWORD:-mongoexpresspass}
+    depends_on:
+      - mongo
+
+  app:
+    build: .
+    restart: unless-stopped
+    # Убедитесь, что порт соответствует PROD_PORT, если NODE_ENV=production
+    # Или DEV_PORT, если NODE_ENV=development
+    # Используем порт 9999, так как NODE_ENV=production, и приложение ожидает PROD_PORT (9999)
+    ports:
+      # Экспонируем 9999 из контейнера наружу
+      # Вы можете изменить внешний порт, если хотите, например, - "3001:9999"
+      - '9999:9999' # Теперь соответствует PROD_PORT
+    environment:
+      NODE_ENV: production # Это заставит app.ts использовать PROD_PORT
+      HTTP_HOST: 0.0.0.0 # Критично для Docker
+      # Устанавливаем PROD_PORT, чтобы приложение слушало на правильном порту внутри контейнера
+      PROD_PORT: 9999
+      # Используем MONGODB_PROD_URI для подключения в prod
+      # Обратите внимание: имя сервиса mongo в compose сети - это 'mongo'
+      MONGODB_URI: mongodb://${MONGO_ROOT_USER:-root}:${MONGO_ROOT_PASSWORD:-example}@mongo:27017/delivery-service?authSource=admin
+      # MONGODB_PROD_URI будет использоваться, так как NODE_ENV=production
+      MONGODB_PROD_URI: mongodb://${MONGO_ROOT_USER:-root}:${MONGO_ROOT_PASSWORD:-example}@mongo:27017/delivery-service?authSource=admin
+      SESSION_SECRET: ${SESSION_SECRET:-your_session_secret_here}
+      JWT_SECRET: ${JWT_SECRET:-your_jwt_secret}
+      UPLOAD_PATH: /app/uploads
+    depends_on:
+      - mongo
+    volumes:
+      - ./uploads:/app/uploads
+volumes:
+  mongo_data:

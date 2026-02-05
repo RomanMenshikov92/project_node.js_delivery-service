@@ -1,0 +1,58 @@
+delivery-service-backend/
+├── dist/
+├── docs/
+│   ├── DEVELOPMENT.md
+│   ├── SPECIFICATION.md
+│   └── RESULT.md
+├── node_modules/
+├── public/
+│   ├── chat-test.css
+│   ├── chat-test.js
+│   └── socket_test.html
+├── res/
+│   └── ...
+├── src/
+│   ├── config/
+│   │   ├── database.config.ts
+│   │   ├── passport.config.ts
+│   │   ├── session.config.ts
+│   │   └── socket.config.ts
+│   ├── controllers/
+│   │   ├── auth.controller.ts
+│   │   └── user.controller.ts
+│   ├── middleware/
+│   │   ├── auth.middleware.ts
+│   │   ├── error.middleware.ts
+│   │   └── socket.middleware.ts
+│   ├── models/
+│   │   ├── advertisement.model.ts
+│   │   ├── chat.model.ts
+│   │   ├── message.model.ts
+│   │   └── user.model.ts
+│   ├── modules/
+│   │   ├── advertisement.module.ts
+│   │   ├── chat.module.ts
+│   │   └── user.module.ts
+│   ├── routes/
+│   │   ├── advertisement.route.ts
+│   │   └── auth.route.ts
+│   ├── scripts/
+│   │   └── setup-env.ts
+│   ├── types/
+│   │   └── express/
+│   │       └── index.d.ts
+│   └── app.ts
+├── uploads/
+├── .env-example
+├── .gitignore
+├── .prettierignore
+├── docker-compose.yaml
+├── Dockerfile
+├── eslint.config.js
+├── package-lock.json
+├── package.json
+├── prettier.config.js
+├── project_structure.txt
+├── README.md
+├── tsconfig.json
+└── vitest.config.ts
